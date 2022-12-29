@@ -1,0 +1,13 @@
+.HIW-mid-section-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.HIW-mid-section-paragraph {
+    padding: 50px;
+}
+
+.firebase-logo {
+    padding: 50px;
+}

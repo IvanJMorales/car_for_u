@@ -23,11 +23,6 @@ const Header = () => {
                         HOW IT WORKS
                     </Link>
                 </li>
-                <li className='nav-item'>
-                    <Link to='/right-car-for-you' className='link'>
-                        RIGHT CAR FOR YOU?
-                    </Link>
-                </li>
 
                 {/*Line in navbar*/}
                 <li>

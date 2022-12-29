@@ -1,0 +1,14 @@
+.HIW-top-section-container {
+    display: flex;
+    background-color: #4b6b95;
+    align-items: center;
+    text-align: center;
+}
+
+.HIW-top-section-paragraph {
+    padding: 50px;
+}
+
+.python-logo {
+    padding: 50px;
+}
