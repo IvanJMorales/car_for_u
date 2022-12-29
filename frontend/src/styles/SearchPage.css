@@ -1,0 +1,12 @@
+.primary-search-container {
+    height: 10px;
+    display: flex;
+    background-color: #255390;
+    padding: 50px;
+    border: 1px solid lightgrey;
+}
+
+.page-number {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,37 @@
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    justify-content: space-around;
+}
+
+.card {
+    height: 500px;
+    width: 300px;
+    margin: 30px;
+    position: relative;
+}
+
+.card-title {
+    overflow: hidden;
+    text-align: center;
+    min-height: 100px;
+    max-height: 200px;
+}
+
+.actions {
+    border-top: 1px solid lightblue;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.page-selector {
+    display: flex;
+}
+
+.card-info {
+    height: 0px;
+}
