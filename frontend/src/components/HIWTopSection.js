@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/HIWTopSection.css'
 
-import pythonLogo from '../images/pythonLogo.jpg';
+import pythonLogo from '../images/pythonLogo.png';
 
 const HIWTopSection = () => {
     return (

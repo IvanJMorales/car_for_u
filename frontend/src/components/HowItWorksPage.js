@@ -1,12 +1,18 @@
 import React from 'react';
-import HIWMidSection from './HIWMidSection';
+
+// Components
 import HIWTopSection from './HIWTopSection';
+import HIWMidSection from './HIWMidSection';
+import HIWBottomSection from './HIWBottomSection';
+import HIWBanner from './HIWBanner';
 
 const HowItWorksPage = () => {
     return (
         <div>
+            <HIWBanner />
             <HIWTopSection />
             <HIWMidSection />
+            <HIWBottomSection />
         </div>
     );
 };

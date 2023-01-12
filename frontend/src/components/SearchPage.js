@@ -8,6 +8,7 @@ import { database } from '../firebase.js';
 // Components Imports
 import SearchField from "./SearchField";
 import SearchResultsCard from "./SearchResultsCard";
+import UserProfileComparisons from './UserProfileComparisons.js';
 
 // Mui Imports
 import Pagination from '@mui/material/Pagination';
@@ -45,6 +46,7 @@ const SearchPage = () => {
                     cars={cars}
                 />
             <Pagination className='page-number'count={10} />
+            <UserProfileComparisons/>
         </div>
     )
 }

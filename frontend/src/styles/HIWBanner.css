@@ -1,0 +1,16 @@
+.HIW-banner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../images/HIWBanner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 500px;
+    color: white;
+}
+
+h1 {
+    font-size: 100px;
+    padding-top: 200px;
+}

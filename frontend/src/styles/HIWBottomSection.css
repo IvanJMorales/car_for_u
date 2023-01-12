@@ -1,15 +1,15 @@
-.HIW-top-section-container {
+.HIW-bottom-section-container {
     display: flex;
     background-color: #4b6b95;
     align-items: center;
     text-align: center;
 }
 
-.HIW-top-section-paragraph {
+.HIW-bottom-section-paragraph {
     padding: 50px;
 }
 
-.python-logo {
+.react-logo {
     padding: 50px;
     height: 300px;
     width: 300px;

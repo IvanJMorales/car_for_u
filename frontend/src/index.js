@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Redux Toolkit
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
+
 // React Router
 import {
   createBrowserRouter,
@@ -19,7 +23,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
     <RouterProvider router={router} />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
