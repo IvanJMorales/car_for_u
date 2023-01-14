@@ -25,16 +25,18 @@ const SearchResultsCard = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const carsToCompare = [useSelector(selectCarsToCompare)]
+    const carsToCompare = useSelector(selectCarsToCompare)
 
     // Add selected car to compare array
     const addCarToCompare = (vehicle) => {
+        dispatch(setCarsToCompare(
+            vehicle
+        ))
         setFav(!fav);
-        dispatch(setCarsToCompare({
-            carsToCompare: vehicle
-        }))
+        console.log("CAR ADDED")
     }
-
+    console.log(carsToCompare)
+    //console.log(carsToCompare)
     // Remove selected car from compare array
     /*const removeFromCompare = (vehicle) => {
         let removeCarIndex = compareCars.indexOf(vehicle)
@@ -64,7 +66,7 @@ const SearchResultsCard = (props) => {
                     {carsToCompare.includes(car) ? (
                         <FavoriteIcon style={{ color: 'orange' }} /*onClick={() => removeFromCompare(car)}*//>
                     ) : (
-                        <FavoriteBorderIcon color='primary' onClick={() => addCarToCompare(car)}/>
+                        <FavoriteBorderIcon color='primary' onClick={() => {addCarToCompare(car); console.log(car)}}/>
                     )}
 
                     <Button onClick={() => navigate('/compare-cars')}>GO TO COMPARE</Button>

@@ -3,15 +3,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 
 const initialState = {
-  carsToCompare: [localStorage.getItem('user')] || []
+  carsToCompareArray: JSON.parse(localStorage.getItem('carsToCompare')) || [],
 }
 
 const compareSlice = createSlice({
   name: 'carsToCompare',
-  initialState,
+  initialState: JSON.parse(localStorage.getItem('carsToCompare')) || [],
   reducers: {
-    setCarsToCompare: (state, action)=>{
-      state.carsToCompare = action.payload.carsToCompare
+    setCarsToCompare: (state, action) => {
+        state.push(action.payload)
     },
     /*setRemoveCarToCompare: state => {
       state.user = null
@@ -21,8 +21,6 @@ const compareSlice = createSlice({
 
 export const {setCarsToCompare} = compareSlice.actions
 
-export const selectCarsToCompare = state => state.carsToCompare.carsToCompare
-//export const selectUserName = state => state.user.userName
-//export const selectUserEmail = state => state.user.userEmail
+export const selectCarsToCompare = state => state.carsToCompare
 
 export default compareSlice.reducer
