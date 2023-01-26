@@ -3,6 +3,7 @@
     background-color: #4b6b95;
     align-items: center;
     text-align: center;
+    justify-content: space-around;
 }
 
 .HIW-bottom-section-paragraph {

@@ -19,6 +19,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { database } from './firebase.js';
 import SignIn from './components/SignIn';
 import CarComparisons from './components/CarComparisons';
+import SearchResultsBody from './components/SearchResultsBody';
+import CarInfoPage from './components/CarInfoPage';
 
 // Collection Reference Context to make Collection accessable to all Context wrapped components
 export const CollectionContext = createContext()
@@ -37,9 +39,9 @@ function App() {
             <Route path="/how-it-works" element={<HowItWorksPage />}/>
             <Route path="/profile" element={<UserProfile />} />
             <Route path='/compare-cars' element={<CarComparisons />}/>
-            {/*<Route path="/right-car-for-you" element={<RightCar4U />}/>
-            <Route path="/car-info/:id" element={<CarInfoPage />}/>
             <Route path="/search-results/" element={<SearchResultsBody />}/>
+            <Route path="/car-info/:id" element={<CarInfoPage />}/>
+            {/*<Route path="/right-car-for-you" element={<RightCar4U />}/>
             <Route path='/profile' element={<UserProfile />}/>
             <Route path='/signup' element={<SignupPage />}/>
             <Route path='/login' element={<LoginPage />}/>*/}
