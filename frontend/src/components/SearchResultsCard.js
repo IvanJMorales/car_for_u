@@ -16,7 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { CollectionContext } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCarsToCompare, setCarsToCompare } from '../redux/features/compareSlice';
+import { selectCarsToCompare, setCarsToCompare, setRemoveCarFromCompare } from '../redux/features/compareSlice';
 
 const SearchResultsCard = (props) => {
     //const [compareCars, setCompareCars] = useState([]);
@@ -25,6 +25,7 @@ const SearchResultsCard = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    // Redux
     const carsToCompare = useSelector(selectCarsToCompare)
 
     // Add selected car to compare array
@@ -36,8 +37,21 @@ const SearchResultsCard = (props) => {
         console.log("CAR ADDED")
     }
     console.log(carsToCompare)
-    //console.log(carsToCompare)
+
+
+
     // Remove selected car from compare array
+    const removeCarFromCompare = (vehicle) => {
+        dispatch(setRemoveCarFromCompare(
+            vehicle
+        ))
+        setFav(!fav);
+        console.log("CAR REMOVED")
+        console.log(carsToCompare)
+    }
+
+
+
     /*const removeFromCompare = (vehicle) => {
         let removeCarIndex = compareCars.indexOf(vehicle)
         if (removeCarIndex > -1) {
@@ -63,8 +77,8 @@ const SearchResultsCard = (props) => {
                     </CardActionArea>
 
                     {/***Favorite (Heart Icon)***/}
-                    {carsToCompare.includes(car) ? (
-                        <FavoriteIcon style={{ color: 'orange' }} /*onClick={() => removeFromCompare(car)}*//>
+                    {carsToCompare.carsToCompare.includes(car) ? (
+                        <FavoriteIcon style={{ color: 'orange' }} onClick={() => removeCarFromCompare(car)}/>
                     ) : (
                         <FavoriteBorderIcon color='primary' onClick={() => {addCarToCompare(car); console.log(car)}}/>
                     )}

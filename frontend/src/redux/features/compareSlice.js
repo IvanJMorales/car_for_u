@@ -1,26 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 
-
-const initialState = {
-  carsToCompareArray: JSON.parse(localStorage.getItem('carsToCompare')) || [],
-}
-
 const compareSlice = createSlice({
-  name: 'carsToCompare',
-  initialState: JSON.parse(localStorage.getItem('carsToCompare')) || [],
-  reducers: {
-    setCarsToCompare: (state, action) => {
-        state.push(action.payload)
+    name: 'carsToCompare',
+    initialState: {
+      carsToCompare: [],
     },
-    /*setRemoveCarToCompare: state => {
-      state.user = null
-    }*/
-  },
+    reducers: {
+      setCarsToCompare: (state, action) => {
+          state.carsToCompare.push(action.payload)
+      },
+      setRemoveCarFromCompare: (state, action) => {
+          state.carsToCompare.splice(state.carsToCompare.findIndex((car) => car.id === action.payload.id), 1)
+      }
+    },
 });
 
+// Actions
 export const {setCarsToCompare} = compareSlice.actions
+export const {setRemoveCarFromCompare} = compareSlice.actions
 
+// Selectors
 export const selectCarsToCompare = state => state.carsToCompare
 
 export default compareSlice.reducer
