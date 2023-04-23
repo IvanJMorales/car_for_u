@@ -7,20 +7,16 @@ import Header from "./components/Header";
 import {Routes, Switch, Route} from "react-router-dom";
 import HomePage from "./components/HomePage";
 import SearchPage from "./components/SearchPage";
-import HowItWorks from "./components/HowItWorks";
-import RightCar4U from "./components/RightCar4U";
 import SearchResultsBody from './components/SearchResultsBody';
 import CarInfoPage from "./components/CarInfoPage";
 
-// Jason
-import LoginPage from './components/LoginPage';
-import SignupPage from './components/SignupPage';
+import UserProfile from './components/UserProfile';
+import ComparePage from './components/ComparePage';
+import SignIn from './components/SignIn';
 
 // Firebase Imports
 import { collection, getDocs } from "firebase/firestore";
 import { database } from './firebase.js';
-import UserProfile from './components/UserProfile';
-import ComparePage from './components/ComparePage';
 
 // Collection Reference Context to make Collection accessable to all Context wrapped components
 export const CollectionContext = createContext()
@@ -40,6 +36,7 @@ function App() {
           <Route path="/search-results/" element={<SearchResultsBody />}/>
           <Route path='/profile' element={<UserProfile />}/>
           <Route path='/compare-cars' element={<ComparePage />}/>
+          <Route path='/signin' element={<SignIn />}/>
         </Routes>
       <Footer />
       </CollectionContext.Provider>

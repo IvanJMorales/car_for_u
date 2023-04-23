@@ -16,8 +16,6 @@
 
 .comparison-details-item {
     padding: 10px;
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(to left bottom, rgb(30, 30, 171), white) border-box;
-    border: 4px solid transparent;
+    border: 1px transparent(0, 100, 100)
 }
 

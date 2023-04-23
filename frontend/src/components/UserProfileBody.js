@@ -8,9 +8,7 @@ import { Avatar } from '@mui/material';
 const UserProfileBody = () => {
     return (
         <div className='profile-body'>
-            <Avatar />
-            <SignIn />
-            
+            <Avatar />         
         </div>
     );
 };

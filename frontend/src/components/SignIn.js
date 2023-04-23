@@ -10,7 +10,9 @@ import { GoogleAuthProvider, reload, signInWithPopup, signOut, onAuthStateChange
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveUser, setUserLogOutState, selectUser, selectUserEmail, selectUserName } from '../redux/features/userSlice';
 
+
 const SignIn = () => {
+
 
     const provider = new GoogleAuthProvider();
     
@@ -57,17 +59,10 @@ const SignIn = () => {
     }
 
     return (
-        <div className='button-container'>
-            {console.log(user)}
-            {
-                
-                user == null ? (
-                    <button className='sign-in-button' onClick={handleSignIn}>Sign In</button>
-                ) : (
-                    <button className='sign-in-button' onClick={handleSignOut}>Sign Out</button>
-                )
-            }
+        <div className='sign-in-button'>
+            
         </div>
+        
     );
 };
 

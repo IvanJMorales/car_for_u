@@ -12,6 +12,7 @@ import UserProfileComparisons from './UserProfileComparisons.js';
 
 // Mui Imports
 import Pagination from '@mui/material/Pagination';
+import FilterSection from './FilterSection';
 
 
 
@@ -36,6 +37,9 @@ const SearchPage = () => {
 
     return (
         <div>
+            <div className='filter-section'>
+                <FilterSection />
+            </div>
             <div className="primary-search-container">
                 <SearchField
                     collectionRef={collectionRef}
