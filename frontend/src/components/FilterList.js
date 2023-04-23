@@ -1,9 +1,12 @@
 import React from 'react'
+import PriceFilter from './PriceFilter'
 
-const FIlterList = () => {
+const FilterList = () => {
   return (
-    <div>]</div>
+      <div>
+        <PriceFilter />
+      </div>
   )
 }
 
-export default FIlterList
+export default FilterList

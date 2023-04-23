@@ -1,8 +1,9 @@
 .card-container {
     display: flex;
+    margin-left: 20%;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: whitesmoke;
+    background-color: green;
     justify-content: space-around;
 }
 

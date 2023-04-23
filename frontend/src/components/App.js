@@ -37,6 +37,7 @@ function App() {
           <Route path='/profile' element={<UserProfile />}/>
           <Route path='/compare-cars' element={<ComparePage />}/>
           <Route path='/signin' element={<SignIn />}/>
+          <Route path='/filter-search-results' element={<FilterSearchResults />}/>
         </Routes>
       <Footer />
       </CollectionContext.Provider>

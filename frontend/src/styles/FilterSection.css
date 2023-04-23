@@ -1,4 +1,8 @@
 .filter-section-container {
     width: 20%;
-    background-color: aqua;
+    height: 100px;
+    position: fixed;
+    z-index: 1;
+    background: #eee;
+    overflow-y: scroll;
 }

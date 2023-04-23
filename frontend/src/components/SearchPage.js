@@ -20,7 +20,6 @@ const SearchPage = () => {
     // Create state for cars
     const [cars, setCars] = useState([]);
 
-
     // Grab Vehicles collection from Firestore Database
     const collectionRef = collection(database, "Vehicles")
 
@@ -37,15 +36,13 @@ const SearchPage = () => {
 
     return (
         <div>
-            <div className='filter-section'>
-                <FilterSection />
-            </div>
             <div className="primary-search-container">
                 <SearchField
                     collectionRef={collectionRef}
                     cars={cars}
                 />
             </div>
+                <FilterSection />
                 <SearchResultsCard 
                     cars={cars}
                 />
