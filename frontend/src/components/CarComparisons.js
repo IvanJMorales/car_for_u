@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import '../styles/CarComparison.css'
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -25,40 +26,19 @@ const CarComparisons = () => {
 
 
     return (
-        <div>
-            {carsToCompare.map((car => (
-                <Card className='card' raised='true' key={car.id} value={car.CarMake}>
-                <CardActionArea>
-                    <Link to={'/car-info/' + car.id}>
-                        <CardMedia
-                            component="img"
-                            alt="CAR IMAGE"
-                            height="180"
-                            image={car.Image}
-                        />
-                    </Link>
-                </CardActionArea>
-
-                <Button onClick={() => navigate('/compare-cars')}>GO TO COMPARE</Button>
-                <CardContent className='card-content'>
-                    <Typography className='card-title' variant="h4">
-                        {car.Name}
-                    </Typography>
-                    <Typography className='card-info' variant="h5" color="text.secondary" p='30px'>
-                        Price: ${car.Price}
-                    </Typography>
-                    <Typography className='card-info' variant="h5" color="text.secondary" p='30px'>
-                        Miles: {car.Miles}
-                    </Typography>
-                </CardContent>
-                <CardActions className='actions'>
-                    <a href={car.Link}>
-                        <Button size="small">Go to site</Button>
-                    </a>
-                </CardActions>
-            </Card>
+        <div className='comparison-table'>
+            {carsToCompare.carsToCompare.map((car => (
+                <div className='grid-item' key={car.id} value={car.CarMake}>
+                    <img className='comparison-image' src={car.Image}></img>
+                    <ul className='comparison-details'>
+                        <li className='comparison-details-item'>{car.Name}</li>
+                        <li className='comparison-details-item'>{car.Manufacturer}</li>
+                        <li className='comparison-details-item'>{car.Model}</li>
+                        <li className='comparison-details-item'>{car.Miles}</li>
+                        <li className='comparison-details-item'>{car.Miles}</li>
+                    </ul>
+                </div>
             )))}
-            {carsToCompare.Name}
         </div>
     );
 };

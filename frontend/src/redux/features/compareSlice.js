@@ -8,10 +8,12 @@ const compareSlice = createSlice({
     },
     reducers: {
       setCarsToCompare: (state, action) => {
-          state.carsToCompare.push(action.payload)
+          if (!state.carsToCompare.includes(action.payload) && state.carsToCompare.length < 2) {
+              state.carsToCompare.push(action.payload) // Push selected car into carsToComapre array
+          }
       },
       setRemoveCarFromCompare: (state, action) => {
-          state.carsToCompare.splice(state.carsToCompare.findIndex((car) => car.id === action.payload.id), 1)
+          state.carsToCompare.splice(state.carsToCompare.findIndex((car) => car.id === action.payload.id), 1) // Finds index of selected car and removes it from carsToCompare array
       }
     },
 });

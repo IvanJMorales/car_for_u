@@ -1,0 +1,23 @@
+.comparison-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.comparison-image {
+    max-width: 60%;
+}
+
+.comparison-details {
+    list-style: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.comparison-details-item {
+    padding: 10px;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(to left bottom, rgb(30, 30, 171), white) border-box;
+    border: 4px solid transparent;
+}
+

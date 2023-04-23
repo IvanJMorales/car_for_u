@@ -47,10 +47,7 @@ const SearchResultsCard = (props) => {
         ))
         setFav(!fav);
         console.log("CAR REMOVED")
-        console.log(carsToCompare)
     }
-
-
 
     /*const removeFromCompare = (vehicle) => {
         let removeCarIndex = compareCars.indexOf(vehicle)
