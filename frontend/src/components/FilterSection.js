@@ -3,7 +3,6 @@ import '../styles/FilterSection.css'
 import PriceFilter from '../components/PriceFilter';
 import FilterList from './FilterList';
 
-
 const FilterSection = () => {
     return (
         <div className='filter-section-container'>

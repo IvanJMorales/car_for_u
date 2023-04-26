@@ -36,8 +36,6 @@ const SearchResultsCard = (props) => {
         setFav(!fav);
         console.log("CAR ADDED")
     }
-    console.log(carsToCompare)
-
 
 
     // Remove selected car from compare array
@@ -46,7 +44,6 @@ const SearchResultsCard = (props) => {
             vehicle
         ))
         setFav(!fav);
-        console.log("CAR REMOVED")
     }
 
     /*const removeFromCompare = (vehicle) => {
