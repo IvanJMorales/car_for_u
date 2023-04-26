@@ -18,9 +18,18 @@ import { CollectionContext } from "../App";
 
 const FilterSearchResults = () => {
 
+    // Init state
+    const [cars, setCars] = useState([])
+
+    // Redux
+    const maxPrice = useSelector(selectMaxPrice)
+
+    // Set collectionRef to Collection Context from ./App
+    const collectionRef = useContext(CollectionContext)
+
     return (
         <div className='card-container'>
-            {carState.map((car) => (
+            {cars.map((car) => (
                 <Card className='card' raised='true' key={car.id} value={car.CarMake}>
                     <CardActionArea>
                         <Link to={'/car-info/' + car.id}>

@@ -10,6 +10,7 @@ import { useNavigate } from "react-router";
 
 import Button from '@mui/material/Button'
 import { selectMaxPrice, setMaxPrice } from "../redux/features/priceFilterSlice";
+import { Link } from "react-router-dom";
 
 
 function PriceFilter() {
@@ -61,7 +62,7 @@ function PriceFilter() {
     <div className='price-filter-container'>
         Maximum Price
         <input placeholder='max' onChange={e => sendMaxPrice(e.target.value)}></input>
-        <Button onClick={() => maxPriceQuery()} variant="contained">SEARCH</Button>
+        <Button onClick={() => maxPriceQuery()}variant="contained">SEARCH</Button>
 
     </div>
   )
