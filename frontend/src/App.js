@@ -21,6 +21,7 @@ import SignIn from './components/SignIn';
 import CarComparisons from './components/CarComparisons';
 import SearchResultsBody from './components/SearchResultsBody';
 import CarInfoPage from './components/CarInfoPage';
+import FilterSearchResults from './components/FilterSearchResults';
 
 // Collection Reference Context to make Collection accessable to all Context wrapped components
 export const CollectionContext = createContext()
@@ -41,6 +42,7 @@ function App() {
             <Route path='/compare-cars' element={<CarComparisons />}/>
             <Route path="/search-results/" element={<SearchResultsBody />}/>
             <Route path="/car-info/:id" element={<CarInfoPage />}/>
+            <Route path='filter-search-results/' element={<FilterSearchResults />}/>
             {/*<Route path="/right-car-for-you" element={<RightCar4U />}/>
             <Route path='/profile' element={<UserProfile />}/>
             <Route path='/signup' element={<SignupPage />}/>

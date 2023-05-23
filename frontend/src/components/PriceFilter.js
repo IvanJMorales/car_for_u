@@ -27,8 +27,8 @@ function PriceFilter() {
   // Set collectionRef to Collection Context from ./App
   const collectionRef = useContext(CollectionContext)
 
-  function maxPriceQuery() {
-    const q = query(collectionRef, where("Price", "<=", maxPrice));
+  /*function maxPriceQuery() {
+    const q = query(collectionRef, where("Price", "<=", maxPrice.maxPrice));
 
     const getQuerySnapshot = async () => {
         const querySnapshot = await getDocs(q);
@@ -39,14 +39,12 @@ function PriceFilter() {
 
         if (querySnapshot.size != 0) {
           navigate("/filter-search-results/", {
-              state: {
-                  maxPrice: maxPrice
-              }
+
           })
       }
     };
     getQuerySnapshot();
-  }
+  }*/
 
 
   const sendMaxPrice = (price) => {
@@ -62,8 +60,9 @@ function PriceFilter() {
     <div className='price-filter-container'>
         Maximum Price
         <input placeholder='max' onChange={e => sendMaxPrice(e.target.value)}></input>
-        <Button onClick={() => maxPriceQuery()}variant="contained">SEARCH</Button>
-
+        <Link to='/filter-search-results/'>
+          <Button variant="contained">SEARCH</Button>
+        </Link>
     </div>
   )
 }

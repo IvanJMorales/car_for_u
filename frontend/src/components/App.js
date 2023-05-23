@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import SearchPage from "./components/SearchPage";
 import SearchResultsBody from './components/SearchResultsBody';
 import CarInfoPage from "./components/CarInfoPage";
+import FilterSearchResults from './components/FilterSearchResults';
 
 import UserProfile from './components/UserProfile';
 import ComparePage from './components/ComparePage';
@@ -17,6 +18,7 @@ import SignIn from './components/SignIn';
 // Firebase Imports
 import { collection, getDocs } from "firebase/firestore";
 import { database } from './firebase.js';
+import TestComp from './TestComp';
 
 // Collection Reference Context to make Collection accessable to all Context wrapped components
 export const CollectionContext = createContext()
@@ -36,8 +38,6 @@ function App() {
           <Route path="/search-results/" element={<SearchResultsBody />}/>
           <Route path='/profile' element={<UserProfile />}/>
           <Route path='/compare-cars' element={<ComparePage />}/>
-          <Route path='/signin' element={<SignIn />}/>
-          <Route path='/filter-search-results' element={<FilterSearchResults />}/>
         </Routes>
       <Footer />
       </CollectionContext.Provider>

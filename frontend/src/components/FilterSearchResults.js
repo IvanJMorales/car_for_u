@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
+import '../styles/FilterSearchResults.css'
 
 import { SearchResultsContext } from './SearchField';
 
+// MUI
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -16,20 +18,35 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 
 import { CollectionContext } from "../App";
 
+// Redux
+import { selectMaxPrice } from '../redux/features/priceFilterSlice';
+import { useSelector } from 'react-redux';
+
 const FilterSearchResults = () => {
 
-    // Init state
-    const [cars, setCars] = useState([])
+    const [filteredCars, setFilteredCars] = useState([])
 
-    // Redux
-    const maxPrice = useSelector(selectMaxPrice)
+    const maxPriceQuery = useSelector(selectMaxPrice)
 
-    // Set collectionRef to Collection Context from ./App
+
+
+    // Firebase query
     const collectionRef = useContext(CollectionContext)
 
+
+    useEffect(() => {
+        const q = query(collectionRef, where("Price", "==", maxPriceQuery));
+
+        const getQuerySnapshot = async () => {
+            const querySnapshot = await getDocs(q);
+            setFilteredCars(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        };
+        getQuerySnapshot();
+    }, [])
+
     return (
-        <div className='card-container'>
-            {cars.map((car) => (
+        <div className='filtered-card-container'>
+            {filteredCars.map((car) => (
                 <Card className='card' raised='true' key={car.id} value={car.CarMake}>
                     <CardActionArea>
                         <Link to={'/car-info/' + car.id}>
