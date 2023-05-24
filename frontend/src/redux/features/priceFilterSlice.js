@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const priceFilterSlice = createSlice({
     name: 'priceFilter',
     initialState: {
-      maxPrice: '',
+      maxPrice: 0,
     },
     reducers: {
       setMaxPrice: (state, action) => {

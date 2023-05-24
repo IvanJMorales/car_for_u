@@ -28,14 +28,12 @@ const FilterSearchResults = () => {
 
     const maxPriceQuery = useSelector(selectMaxPrice)
 
-
-
     // Firebase query
     const collectionRef = useContext(CollectionContext)
 
 
     useEffect(() => {
-        const q = query(collectionRef, where("Price", "==", maxPriceQuery));
+        const q = query(collectionRef, where("Price", "<=", maxPriceQuery.maxPrice));
 
         const getQuerySnapshot = async () => {
             const querySnapshot = await getDocs(q);
@@ -45,7 +43,7 @@ const FilterSearchResults = () => {
     }, [])
 
     return (
-        <div className='filtered-card-container'>
+        <div className='card-container'>
             {filteredCars.map((car) => (
                 <Card className='card' raised='true' key={car.id} value={car.CarMake}>
                     <CardActionArea>
