@@ -19,21 +19,24 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { CollectionContext } from "../App";
 
 // Redux
-import { selectMaxPrice } from '../redux/features/priceFilterSlice';
+import { selectMaxPrice, selectMinPrice, } from '../redux/features/priceFilterSlice';
 import { useSelector } from 'react-redux';
 
 const FilterSearchResults = () => {
-
+    
+    // Initalize state
     const [filteredCars, setFilteredCars] = useState([])
 
+    // Grab min and max price query from Redux store
+    const minPriceQuery = useSelector(selectMinPrice)
     const maxPriceQuery = useSelector(selectMaxPrice)
 
-    // Firebase query
+    // Firebase collection reference
     const collectionRef = useContext(CollectionContext)
 
-
+    // Query Firebase database to run on page render
     useEffect(() => {
-        const q = query(collectionRef, where("Price", "<=", maxPriceQuery.maxPrice));
+        const q = query(collectionRef, where("Price", ">=", minPriceQuery.minPrice), where("Price", "<=", maxPriceQuery.maxPrice));
 
         const getQuerySnapshot = async () => {
             const querySnapshot = await getDocs(q);

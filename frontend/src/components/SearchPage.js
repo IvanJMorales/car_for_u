@@ -29,7 +29,6 @@ const SearchPage = () => {
         const getData = async () => {
             const data = await getDocs(collectionRef);
             setCars(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-            console.log(data);
         };
         getData();
     }, []);

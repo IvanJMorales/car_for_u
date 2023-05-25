@@ -7,6 +7,7 @@ export const store = configureStore({
   reducer: {
     user: userReducer,
     carsToCompare: compareReducer,
+    minPrice: priceReducer,
     maxPrice: priceReducer,
   },
 })
