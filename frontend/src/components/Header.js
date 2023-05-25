@@ -8,12 +8,18 @@ import { onAuthStateChanged } from 'firebase/auth';
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveUser, setUserLogOutState, selectUser, selectUserEmail, selectUserName } from '../redux/features/userSlice';
+import SmallNav from './SmallNav';
 
 const Header = () => {
 
     const user = useSelector(selectUser)
     //const userEmail = useSelector(selectUserEmail)
     const dispatch = useDispatch()
+
+
+    const [matches, setMatches] = useState(
+        window.matchMedia("(min-width: 768px)").matches
+    )
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -28,43 +34,60 @@ const Header = () => {
         })
     }, [])
 
-    return (
-        <div className='header'>
-            <div className='logo'>
-                <Link to='/' className='logo-link'>
-                    <div className='logo'>
-                    </div>
-                </Link>
-            </div>
-            <ul className='navbar'>
-                <li className='nav-item'>
-                    <Link to='/search-page' className='link'>
-                        SEARCH CARS
-                    </Link>
-                </li>
-                <li className='nav-item'>
-                    <Link to='/how-it-works' className='link'>
-                        HOW IT WORKS
-                    </Link>
-                </li>
+    // Media query
+    useEffect(() => {
+        window
+        .matchMedia("(min-width: 600px)")
+        .addEventListener('change', e => setMatches( e.matches ));
+    }, [])
 
-                {/*Line in navbar*/}
-                <li>
-                    <div className="vl"></div>
-                </li>
-                {/*USER LOGIN*/}
-                <li className='nav-item'>
-                    {user ? (
-                        <Link to='/profile' className='link'>
-                            {user.email}
+
+
+    return (
+        <div>
+            <div className='header'>
+                <div className='logo'>
+                    <Link to='/' className='logo-link'>
+                        <div className='logo'>
+                        </div>
+                    </Link>
+                </div>
+                {matches && (
+                <ul className='navbar'>
+                    <li className='nav-item'>
+                        <Link to='/search-page' className='link'>
+                            SEARCH CARS
                         </Link>
-                    ) : ( 
-                        <Link to='/signin' className='link'>
-                            LOGIN
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/how-it-works' className='link'>
+                            HOW IT WORKS
                         </Link>
-                    )}
-                </li>
-            </ul>
+                    </li>
+
+                    {/*Line in navbar*/}
+                    <li>
+                        <div className="vl"></div>
+                    </li>
+                    {/*USER LOGIN*/}
+                    <li className='nav-item'>
+                        {user ? (
+                            <Link to='/profile' className='link'>
+                                {user.email}
+                            </Link>
+                        ) : ( 
+                            <Link to='/signin' className='link'>
+                                LOGIN
+                            </Link>
+                        )}
+                    </li>
+                </ul>
+                )}
+            </div>
+
+            {!matches && (
+                <SmallNav />
+            )}
         </div>
     );
 };
