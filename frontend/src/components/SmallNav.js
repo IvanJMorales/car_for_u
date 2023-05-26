@@ -18,89 +18,62 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
 
-function SmallNav(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+function SmallNav() {
+    const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
+    const handleDrawerToggle = () => {
+        setMobileOpen((prevState) => !prevState);
+    };
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Divider />
-      <ul>
-                    <li >
-                        <Link to='/search-page' className='link'>
-                            SEARCH CARS
-                        </Link>
-                    </li>
-                    <li >
-                        <Link to='/how-it-works' className='link'>
-                            HOW IT WORKS
-                        </Link>
-                    </li>
-
-                    {/*Line in navbar*/}
-                    <li>
-                        <div className="vl"></div>
-                    </li>
-                    {/*USER LOGIN*/}
-                </ul>
-    </Box>
-  );
-
-  const container = window !== undefined ? () => window().document.body : undefined;
+    const drawer = (
+        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+            <ul>
+                <li>
+                    <Link to='/search-page' className='link'>
+                        SEARCH CARS
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/how-it-works' className='link'>
+                        HOW IT WORKS
+                    </Link>
+                </li>
+            </ul>
+        </Box>
+    );
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar component="nav">
+        <CssBaseline />
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
-              </Button>
-            ))}
-          </Box>
+            <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+                <MenuIcon />
+            </IconButton>
         </Toolbar>
-      </AppBar>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
+
+        <Box component="nav">
+            <Drawer
+                variant="temporary"
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+                ModalProps={{
+                    keepMounted: true, // Better open performance on mobile.
+                }}
+                sx={{
+                    display: { xs: 'block', sm: 'none' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                }}
+            >
+            {drawer}
+            </Drawer>
+        </Box>
     </Box>
     )
 }

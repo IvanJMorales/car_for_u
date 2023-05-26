@@ -45,6 +45,8 @@ const Header = () => {
 
     return (
         <div>
+            {/* Rendered if screen width size larger that 600 */}
+            {matches && (
             <div className='header'>
                 <div className='logo'>
                     <Link to='/' className='logo-link'>
@@ -52,7 +54,6 @@ const Header = () => {
                         </div>
                     </Link>
                 </div>
-                {matches && (
                 <ul className='navbar'>
                     <li className='nav-item'>
                         <Link to='/search-page' className='link'>
@@ -82,12 +83,22 @@ const Header = () => {
                         )}
                     </li>
                 </ul>
-                )}
             </div>
-
-            {!matches && (
-                <SmallNav />
             )}
+
+            {/* Rendered if screen width smaller than 600 */}
+            {!matches && (
+            <div className='header'>
+                <div className='logo'>
+                    <Link to='/' className='logo-link'>
+                        <div className='logo'>
+                        </div>
+                    </Link>
+                </div>
+                <SmallNav />
+            </div>
+            )}
+
         </div>
     );
 };
