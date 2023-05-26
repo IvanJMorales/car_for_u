@@ -60,6 +60,7 @@ function SmallNav() {
 
         <Box component="nav">
             <Drawer
+                anchor="right"
                 variant="temporary"
                 open={mobileOpen}
                 onClose={handleDrawerToggle}
