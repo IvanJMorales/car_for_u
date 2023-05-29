@@ -58,7 +58,7 @@ const SearchResultsCard = (props) => {
     return (
         <div className='card-container'>
             {props.cars.map((car) => (
-                <Card className='card' raised='true' key={car.id} value={car.CarMake}>
+                <Card className='card' key={car.id} value={car.CarMake}>
                     <CardActionArea>
                         <Link to={'/car-info/' + car.id}>
                             <CardMedia
@@ -79,14 +79,14 @@ const SearchResultsCard = (props) => {
 
                     <Button onClick={() => navigate('/compare-cars')}>GO TO COMPARE</Button>
                     <CardContent className='card-content'>
-                        <Typography className='card-title' variant="h4">
+                        <Typography className='card-title' variant="h5" margin='-5px'>
                             {car.Name}
                         </Typography>
-                        <Typography className='card-info' variant="h5" color="text.secondary" p='30px'>
-                            Price: ${car.Price}
-                        </Typography>
-                        <Typography className='card-info' variant="h5" color="text.secondary" p='30px'>
+                        <Typography className='card-info' variant="h7" color="text.secondary" p='x' margin='5px'>
                             Miles: {car.Miles}
+                        </Typography>
+                        <Typography className='card-info' variant="h6">
+                            Price: ${car.Price}
                         </Typography>
                     </CardContent>
                     <CardActions className='actions'>

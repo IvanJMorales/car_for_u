@@ -41,10 +41,12 @@ const SearchPage = () => {
                     cars={cars}
                 />
             </div>
+            <div className='search-page-body'>
                 <FilterSection />
                 <SearchResultsCard 
                     cars={cars}
                 />
+            </div>
             <Pagination className='page-number'count={10} />
             <UserProfileComparisons/>
         </div>

@@ -48,7 +48,7 @@ const FilterSearchResults = () => {
     return (
         <div className='card-container'>
             {filteredCars.map((car) => (
-                <Card className='card' raised='true' key={car.id} value={car.CarMake}>
+                <Card className='card' key={car.id} value={car.CarMake}>
                     <CardActionArea>
                         <Link to={'/car-info/' + car.id}>
                             <CardMedia
