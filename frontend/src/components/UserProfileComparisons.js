@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Global } from '@emotion/react';
 import { styled } from '@mui/material/styles';
@@ -9,7 +9,9 @@ import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import CarComparisons from '../components/CarComparisons.js';
+import { useSelector } from 'react-redux';
+import CarComparisons from './CarComparisons';
+import { selectCarsToCompare } from '../redux/features/compareSlice';
 
 const drawerBleeding = 56;
 
@@ -41,9 +43,11 @@ function SwipeableEdgeDrawer(props) {
     setOpen(newOpen);
   };
 
+  // Redux
+  const carsToCompareArray = useSelector(selectCarsToCompare)
+
   return (
     <Root>
-      <CssBaseline />
       <Global
         styles={{
           '.MuiDrawer-root > .MuiPaper-root': {
@@ -52,9 +56,6 @@ function SwipeableEdgeDrawer(props) {
           },
         }}
       />
-      <Box sx={{ textAlign: 'center', pt: 1 }}>
-        <Button onClick={toggleDrawer(true)}>Open</Button>
-      </Box>
       <SwipeableDrawer
         anchor="bottom"
         open={open}
@@ -75,32 +76,19 @@ function SwipeableEdgeDrawer(props) {
             visibility: 'visible',
             right: 0,
             left: 0,
+            pointerEvents: "all"
           }}
         >
-          <Puller/>
-          <Typography sx={{ p: 2, color: 'text.secondary' }}>COMPARISONS</Typography>
+          <Puller />
+          <Box sx={{ textAlign: 'center', pt: 1 }}>
+            <Button onClick={toggleDrawer(true)}>Open Comparisons</Button>
+          </Box>
+          <Typography sx={{ p: 2, color: 'text.secondary' }}>results</Typography>
         </StyledBox>
-        <StyledBox
-          sx={{
-            px: 2,
-            pb: 2,
-            height: '100%',
-            overflow: 'auto',
-          }}
-        >
-          <Skeleton variant="rectangular" height="100%" />
-        </StyledBox>
+        <CarComparisons />
       </SwipeableDrawer>
     </Root>
   );
 }
-
-SwipeableEdgeDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
 
 export default SwipeableEdgeDrawer;

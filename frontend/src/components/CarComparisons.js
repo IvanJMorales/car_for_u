@@ -8,10 +8,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { selectCarsToCompare } from '../redux/features/compareSlice';
 
 const CarComparisons = () => {
+
+    // Redux selector
     const carsToCompare = useSelector(selectCarsToCompare)
-
-    const navigate = useNavigate();
-
 
     return (
         <div className='comparison-table'>

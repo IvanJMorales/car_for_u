@@ -34,7 +34,6 @@ const SearchResultsCard = (props) => {
             vehicle
         ))
         setFav(!fav);
-        console.log("CAR ADDED")
     }
 
 
@@ -70,14 +69,14 @@ const SearchResultsCard = (props) => {
                         </Link>
                     </CardActionArea>
 
-                    {/***Favorite (Heart Icon)***/}
+                    {/***Favorite (Heart Icon) and Comparison Button***/}
                     {carsToCompare.carsToCompare.includes(car) ? (
-                        <FavoriteIcon style={{ color: 'orange' }} onClick={() => removeCarFromCompare(car)}/>
+                        <FavoriteIcon className='fav-button' style={{ color: 'orange' }} onClick={() => removeCarFromCompare(car)}/>
                     ) : (
-                        <FavoriteBorderIcon color='primary' onClick={() => {addCarToCompare(car); console.log(car)}}/>
+                        <FavoriteBorderIcon className='fav-button' color='primary' onClick={() => {addCarToCompare(car); console.log(car)}}/>
                     )}
 
-                    <Button onClick={() => navigate('/compare-cars')}>GO TO COMPARE</Button>
+
                     <CardContent className='card-content'>
                         <Typography className='card-title' variant="h5" margin='-5px'>
                             {car.Name}

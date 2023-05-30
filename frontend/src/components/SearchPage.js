@@ -13,6 +13,8 @@ import UserProfileComparisons from './UserProfileComparisons.js';
 // Mui Imports
 import Pagination from '@mui/material/Pagination';
 import FilterSection from './FilterSection';
+import { useSelector } from 'react-redux';
+import { selectCarsToCompare } from '../redux/features/compareSlice';
 
 
 
@@ -33,6 +35,8 @@ const SearchPage = () => {
         getData();
     }, []);
 
+    const carsToCompareRef = useSelector(selectCarsToCompare)
+
     return (
         <div>
             <div className="primary-search-container">
@@ -47,8 +51,13 @@ const SearchPage = () => {
                     cars={cars}
                 />
             </div>
-            <Pagination className='page-number'count={10} />
-            <UserProfileComparisons/>
+            
+            {/*** Render comparison drawer at bottom if carsToCompareRef contains a car ***/}
+            {carsToCompareRef.carsToCompare.length ? (
+                <UserProfileComparisons/>
+            ):(
+                null
+            )}
         </div>
     )
 }
