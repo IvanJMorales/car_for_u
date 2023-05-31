@@ -45,32 +45,32 @@ const CarInfoPage = () => {
                 <div className='carInfo-name'>
                     {carState.Name}
                 </div>
-                <h1>Price: ${carState.Price}</h1>
-                <h2>Vehicle Details:</h2>
-                <div className='carInfo-info'>
-                    <ul className='info'>
+                <div className='carInfo-price'>Price: ${carState.Price}</div>
+                <div className='carInfo-details-title'>Vehicle Details</div>
+                <div>
+                    <ul className='carInfo-details'>
                         <li className='list-item'>
-                            <h4>Manufacturer:</h4> {carState.Manufacturer}
+                            <div className='carInfo-list-detail'>Manufacturer: {carState.Manufacturer}</div>
                         </li>
                         <li className='list-item'>
-                            <h4>Model:</h4> {carState.Model}
+                            <div className='carInfo-list-detail'>Model: {carState.Model}</div>
                         </li>
                         <li className='list-item'>
-                            <h4>Year:</h4> {carState.Year}
+                            <div className='carInfo-list-detail'>Year: {carState.Year}</div>
                         </li>
                         <li className='list-item'>
-                            <h4>Miles:</h4> {carState.Miles}
+                            <div className='carInfo-list-detail'>Miles: {carState.Miles}</div>
                         </li>
                         <li className='list-item'>
-                            <h4>Color:</h4> {carState.Color}
+                            <div className='carInfo-list-detail'>Color: {carState.Color}</div>
                         </li>
                         <li className='list-item'>
-                            <h4>Engine:</h4> {carState.Engine}
+                            <div className='carInfo-list-detail'>Engine: {carState.Engine}</div>
                         </li>        
                     </ul>
                 </div>
                 <a href={carState.Link} className='carInfo-button'>
-                    <Button size="large">Go to site</Button>
+                    <Button size="large">Go To Dealer</Button>
                 </a>
             </div>
         </div>

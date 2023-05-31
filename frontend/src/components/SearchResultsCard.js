@@ -12,6 +12,8 @@ import CardActionArea from '@mui/material/CardActionArea';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+import { Textfit } from 'react-textfit';
+
 import { Link, useNavigate } from 'react-router-dom';
 
 import { CollectionContext } from '../App';
@@ -75,12 +77,10 @@ const SearchResultsCard = (props) => {
                     ) : (
                         <FavoriteBorderIcon className='fav-button' color='primary' onClick={() => {addCarToCompare(car); console.log(car)}}/>
                     )}
-
-
-                    <CardContent className='card-content'>
-                        <Typography className='card-title' variant="h5" margin='-5px'>
+                        <Typography className='card-title' variant="h5" margin='-5px' nowrap={true}>
                             {car.Name}
                         </Typography>
+                    <CardContent className='card-content'>
                         <Typography className='card-info' variant="h7" color="text.secondary" p='x' margin='5px'>
                             Miles: {car.Miles}
                         </Typography>

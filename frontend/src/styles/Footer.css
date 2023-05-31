@@ -1,11 +1,10 @@
 .footer {
-    min-height: 10vh;
     width: 100%;
-    bottom: 0;
     background-color: #255390;
     border-top: 3px solid lightgray;
     padding-top: 20px;
     overflow: wrap;
+    margin-top: auto;
 }
 
 .column-footer {
