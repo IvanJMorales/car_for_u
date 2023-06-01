@@ -10,6 +10,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { database } from '../firebase.js';
 
 import { CollectionContext } from '../App';
+import { Textfit } from 'react-textfit';
 
 
 const CarInfoPage = () => {
@@ -36,6 +37,24 @@ const CarInfoPage = () => {
         getCarData();
     }, []);
 
+    // Change font size of car name based on text length
+    useEffect(() => {
+        const getFontSize = (textLength) => {
+        const baseSize = 9
+        if (textLength >= baseSize) {
+            textLength = baseSize - 3
+        }
+        const fontSize = baseSize - textLength
+            return `${fontSize}vw`
+        }
+
+        const boxes = document.querySelectorAll('.carInfo-name')
+        
+        boxes.forEach(box => {
+            box.style.fontSize = getFontSize(box.textContent.length)
+        })
+    })
+
     return (
         <div className='container'>
             <img className='carInfo-image'
@@ -46,9 +65,9 @@ const CarInfoPage = () => {
                     {carState.Name}
                 </div>
                 <div className='carInfo-price'>Price: ${carState.Price}</div>
-                <div className='carInfo-details-title'>Vehicle Details</div>
-                <div>
-                    <ul className='carInfo-details'>
+                <div className='carInfo-details-container'>
+                    <div className='carInfo-details-title'>Vehicle Details</div>
+                    <ul className='carInfo-details-grid'>
                         <li className='list-item'>
                             <div className='carInfo-list-detail'>Manufacturer: {carState.Manufacturer}</div>
                         </li>
@@ -59,7 +78,7 @@ const CarInfoPage = () => {
                             <div className='carInfo-list-detail'>Year: {carState.Year}</div>
                         </li>
                         <li className='list-item'>
-                            <div className='carInfo-list-detail'>Miles: {carState.Miles}</div>
+                            <div className='carInfo-list-detail'>Miles: {carState.Miles}</div> 
                         </li>
                         <li className='list-item'>
                             <div className='carInfo-list-detail'>Color: {carState.Color}</div>

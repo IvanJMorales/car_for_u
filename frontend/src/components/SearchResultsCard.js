@@ -47,13 +47,23 @@ const SearchResultsCard = (props) => {
         setFav(!fav);
     }
 
-    /*const removeFromCompare = (vehicle) => {
-        let removeCarIndex = compareCars.indexOf(vehicle)
-        if (removeCarIndex > -1) {
-            compareCars.splice(removeCarIndex, 1);
-            setFav(!fav);
+    // Change font size of car name based on text length
+    useEffect(() => {
+        const getFontSize = (textLength) => {
+            const baseSize = 9
+            if (textLength >= baseSize) {
+                textLength = baseSize - 2.5
+            }
+            const fontSize = baseSize - textLength
+                return `${fontSize}vh`
         }
-    }*/
+
+        const boxes = document.querySelectorAll('.card-title')
+        
+        boxes.forEach(box => {
+            box.style.fontSize = getFontSize(box.textContent.length)
+        })
+    })
 
     const data = useContext(CollectionContext)
     return (
@@ -77,9 +87,9 @@ const SearchResultsCard = (props) => {
                     ) : (
                         <FavoriteBorderIcon className='fav-button' color='primary' onClick={() => {addCarToCompare(car); console.log(car)}}/>
                     )}
-                        <Typography className='card-title' variant="h5" margin='-5px' nowrap={true}>
-                            {car.Name}
-                        </Typography>
+                    <Typography className='card-title' variant="h5" margin='-5px'>
+                        {car.Name}
+                    </Typography>
                     <CardContent className='card-content'>
                         <Typography className='card-info' variant="h7" color="text.secondary" p='x' margin='5px'>
                             Miles: {car.Miles}

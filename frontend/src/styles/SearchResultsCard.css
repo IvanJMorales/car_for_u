@@ -21,8 +21,6 @@
 
 .card-title {
     text-align: center;
-    height: 50px;
-    background-color: aqua;
 }
 
 .card-info {
@@ -31,7 +29,7 @@
 
 .card-content {
     height: 20vh;
-
+    margin-top: 30px;
 }
 
 .actions {

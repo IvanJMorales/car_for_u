@@ -9,7 +9,6 @@
     width: 100%;
 }
 
-
 .carInfo-container {
     display: flex;
     flex-direction: column;
@@ -25,51 +24,60 @@
 .carInfo-name {
     display: flex;
     font-size: 50px;
-    margin: 30px;
+    margin: 15px;
     color:rgb(38, 57, 77);
     text-align: center;
+    max-width: 60%;
 }
 
 .carInfo-price {
+    display: flex;
     font-size: 40px;
-    font-weight: 1000;
+    font-weight: 500;
+}
+
+.carInfo-details-container {
+    background-color: #d6dce4;
+    border-radius: 50px;
+    margin-top: 30px;
 }
 
 .carInfo-details-title {
     font-size: 30px;
+    font-weight: 700;
     text-align: center;
     width: 100%;
 }
 
-.carInfo-details {
+.carInfo-details-grid {
     display: grid;
-    gap: 5px;
-    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    grid-template-columns: 0.5fr 0.5fr;
     grid-template-rows: auto auto;
     list-style: none;
-    background-color: rgb(193, 211, 237);
-    padding: 1px;
+    background-color: white;
+    padding-top: 0px;
+    border-radius: 50px;
 }
 
 .list-item {
     display: flex;
     align-items: center;
     background-color: white;
-}
-
-.carInfo-list-detail {
-
-
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 50px;
 }
 
 .carInfo-button {
     background-color: #255390;
     text-align: center;
-    width: 100%;
+    width:80%;
+    margin-top: 10px;
 }
 
 .carInfo-button:hover {
-    background-color: gray;
+    background-color: rgb(96, 155, 201);
 }
 
 h2 {
