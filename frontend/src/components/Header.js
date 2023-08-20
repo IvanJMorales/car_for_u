@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/Header.css"
 
+import SignIn from '../components/SignIn.js'
+
+
+// Firebase
 import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -9,6 +13,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveUser, setUserLogOutState, selectUser, selectUserEmail, selectUserName } from '../redux/features/userSlice';
 import SmallNav from './SmallNav';
+import { createPortal } from 'react-dom';
 
 const Header = () => {
 
@@ -16,7 +21,7 @@ const Header = () => {
     //const userEmail = useSelector(selectUserEmail)
     const dispatch = useDispatch()
 
-    const [popUp, setPopUp] = useState(false)
+    const [showPopUp, setShowPopUp] = useState(false)
 
     const [matches, setMatches] = useState(
         window.matchMedia("(min-width: 768px)").matches
@@ -78,11 +83,16 @@ const Header = () => {
                                 {user.email}
                             </Link>
                         ) : ( 
-                            <button onChange={() => setPopUp(true)}></button>
+                            <button onClick={() => setShowPopUp(true)}>Sign In</button>
                         )}
                     </li>
                 </ul>
             </div>
+            )}
+
+            {showPopUp && createPortal(
+                <SignIn onClose={() => setShowPopUp(false)} />,
+                document.body
             )}
 
             {/* Rendered if screen width smaller than 600 */}

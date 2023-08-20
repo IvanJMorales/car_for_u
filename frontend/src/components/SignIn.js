@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setActiveUser, setUserLogOutState, selectUser, selectUserEmail, selectUserName } from '../redux/features/userSlice';
 
 
-const SignIn = () => {
+const SignIn = ({ onClose }) => {
 
 
     const provider = new GoogleAuthProvider();
@@ -59,8 +59,9 @@ const SignIn = () => {
     }
 
     return (
-        <div className='sign-in-button'>
-            
+        <div className='sign-in-container'>
+            <button onClick={onClose}>Close</button>
+            HELLO SIGN IN
         </div>
         
     );
