@@ -16,6 +16,7 @@ const Header = () => {
     //const userEmail = useSelector(selectUserEmail)
     const dispatch = useDispatch()
 
+    const [popUp, setPopUp] = useState(false)
 
     const [matches, setMatches] = useState(
         window.matchMedia("(min-width: 768px)").matches
@@ -77,9 +78,7 @@ const Header = () => {
                                 {user.email}
                             </Link>
                         ) : ( 
-                            <Link to='/signin' className='link'>
-                                LOGIN
-                            </Link>
+                            <button onChange={() => setPopUp(true)}></button>
                         )}
                     </li>
                 </ul>
