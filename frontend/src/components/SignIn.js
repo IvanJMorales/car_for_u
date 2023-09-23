@@ -1,66 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import '../styles/SignIn.css';
+
+//MUI
+import GoogleIcon from '@mui/icons-material/Google';
 
 // Firebase
 import { auth } from '../firebase.js'
-import { GoogleAuthProvider, reload, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
+import { GoogleAuthProvider, reload, signInWithPopup, signOut, onAuthStateChanged, setPersistence, browserSessionPersistence } from "firebase/auth";
 
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveUser, setUserLogOutState, selectUser, selectUserEmail, selectUserName } from '../redux/features/userSlice';
+import { UserContext } from '../App';
 
 
 const SignIn = ({ onClose }) => {
 
 
-    const provider = new GoogleAuthProvider();
-    
-    const dispatch = useDispatch()
+    const provider = new GoogleAuthProvider(); // Google signin provider
+    const user = useContext(UserContext)
 
-    const user = useSelector(selectUser)
-    //const userName = useSelector(selectUserName)
-    //const userEmail = useSelector(selectUserEmail)
 
     const handleSignIn = () => {
         signInWithPopup(auth, provider)
-            .then((result) => { // Opens Google API to sign in with Google Email
-                dispatch(setActiveUser({ // Update redux state
-                    user: result.user,
-                    //userName: result.user.displayName, // Get name from Google Account 
-                    //userEmail: result.user.email // Get email from Google Account
-            }))
-        })
-    }
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                dispatch(setActiveUser({ // Update redux state
-                user: user,
-              // User is signed in, see docs for a list of available properties
-              // https://firebase.google.com/docs/reference/js/firebase.User
-    
-            }))
-        }
-        })
-    }, [])
-
-    //console.log(user.displayName)
-
-    const handleSignOut = () => {
-        signOut(auth)
-            .then(() => { // Signs out of Google Account
-                dispatch(setUserLogOutState()) // Update redux state
-                localStorage.clear();
-                console.log("CLICKED SIGN OUT")
-            }).catch((err) => alert(err.message))
-        window.location.reload()
+            .then(() => {
+                setPersistence(auth, browserSessionPersistence);
+                console.log(auth.currentUser);
+                window.location.reload();
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            })
     }
 
     return (
         <div className='sign-in-container'>
             <button onClick={onClose}>Close</button>
+            <GoogleIcon onClick={() => handleSignIn()}/>
             HELLO SIGN IN
         </div>
         

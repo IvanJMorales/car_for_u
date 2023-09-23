@@ -8,7 +8,7 @@ import { database } from '../firebase.js';
 // Components Imports
 import SearchField from "./SearchField";
 import SearchResultsCard from "./SearchResultsCard";
-import UserProfileComparisons from './UserProfileComparisons.js';
+import CarFavoritesDrawer from './CarFavoritesDrawer.js';
 
 // Mui Imports
 import Pagination from '@mui/material/Pagination';
@@ -54,7 +54,7 @@ const SearchPage = () => {
             
             {/*** Render comparison drawer at bottom if carsToCompareRef contains a car ***/}
             {carsToCompareRef.carsToCompare.length ? (
-                <UserProfileComparisons/>
+                <CarFavoritesDrawer />
             ):(
                 null
             )}

@@ -14,6 +14,7 @@ const userSlice = createSlice({
     setActiveUser: (state, action)=>{
       state.user = action.payload.user
       state.userName = action.payload.userName
+      state.userId = action.payload.userId
       //state.userEmail = action.payload.userEmail
     },
     setUserLogOutState: state => {

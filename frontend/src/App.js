@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import './App.css';
 
 // Components
@@ -8,7 +8,6 @@ import Footer from './components/Footer';
 import SearchPage from './components/SearchPage';
 import HowItWorksPage from './components/HowItWorksPage';
 import UserProfile from './components/UserProfile';
-import UserProfileComparisons from './components/UserProfileComparisons';
 
 
 // React Router
@@ -16,23 +15,55 @@ import {Routes, Switch, Route} from "react-router-dom";
 
 // Firebase
 import { collection, getDocs } from "firebase/firestore";
-import { database } from './firebase.js';
-import SignIn from './components/SignIn';
+import { database, auth } from './firebase.js';
 import CarComparisons from './components/CarComparisons';
 import SearchResultsBody from './components/SearchResultsBody';
 import CarInfoPage from './components/CarInfoPage';
 import FilterSearchResults from './components/FilterSearchResults';
+import { onAuthStateChanged, browserLocalPersistence, setPersistence } from 'firebase/auth';
+import Loader from './components/Loader';
 
+
+
+/***COLLECTION REFERENCE START***/
 // Collection Reference Context to make Collection accessable to all Context wrapped components
-export const CollectionContext = createContext()
+export const CollectionContext = createContext();
 
 // Reference to firebase collection
-const collectionRef = collection(database, "Vehicles")
+const collectionRef = collection(database, "Vehicles");
+/***COLLECTION REFERENCE END***/
+
+/***USER CONTEXT START ***/
+//User Context
+export const UserContext = createContext();
+/***USER CONTEXT END ***/
+
+
 
 function App() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/auth.user
+          setUser(user);
+          console.log(user.email, "LOGGED IN");
+          // ...
+      } else {
+          console.log("LOGGED OUT");
+          setUser(undefined);
+          // User is signed out
+          // ...
+      }
+    })
+  }, [])
+
   return (
     <div className='App'>
       <CollectionContext.Provider value={collectionRef}>
+      <UserContext.Provider value={user}>
         <Header />
           <Routes>
             <Route path="/" element={<HomePage />}/>
@@ -48,6 +79,7 @@ function App() {
             <Route path='/signup' element={<SignupPage />}/>
             <Route path='/login' element={<LoginPage />}/>*/}
           </Routes>
+      </UserContext.Provider>
       </CollectionContext.Provider>
       <Footer />
     </div>

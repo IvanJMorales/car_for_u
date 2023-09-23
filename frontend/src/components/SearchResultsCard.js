@@ -16,6 +16,8 @@ import { Textfit } from 'react-textfit';
 
 import { Link, useNavigate } from 'react-router-dom';
 
+import { addDoc } from 'firebase/firestore';
+
 import { CollectionContext } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCarsToCompare, setCarsToCompare, setRemoveCarFromCompare } from '../redux/features/compareSlice';
@@ -26,6 +28,9 @@ const SearchResultsCard = (props) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    // Collection Reference
+    const data = useContext(CollectionContext)
 
     // Redux
     const carsToCompare = useSelector(selectCarsToCompare)
@@ -65,7 +70,6 @@ const SearchResultsCard = (props) => {
         })
     })
 
-    const data = useContext(CollectionContext)
     return (
         <div className='card-container'>
             {props.cars.map((car) => (

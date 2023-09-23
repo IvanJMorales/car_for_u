@@ -1,13 +1,14 @@
 import React from 'react';
-import SignIn from '../components/SignIn.js';
-import UserProfileComparisons from '../components/UserProfileComparisons.js';
+
+// Components
 import UserProfileBody from '../components/UserProfileBody.js';
+import UPCarFavoritesSection from './UPCarFavoritesSection.js';
 
 const UserProfile = () => {
     return (
         <div>
             <UserProfileBody />
-            <UserProfileComparisons />
+            <UPCarFavoritesSection />
         </div>
     );
 };
