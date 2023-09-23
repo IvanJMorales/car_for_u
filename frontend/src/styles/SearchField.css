@@ -1,14 +1,15 @@
-.selection-area {
-    width: 100%;
-}
-
 .search-bar-container {
     display: flex;
+    margin: 10px;
     justify-content: center;
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+    border-radius: 10px;
 }
 
 .search-bar {
-    width: 100%;
+    width: 80%;
     height: 2.8rem;
     background: white;
     outline: none;

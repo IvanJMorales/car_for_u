@@ -38,16 +38,16 @@ const SearchPage = () => {
     const carsToCompareRef = useSelector(selectCarsToCompare)
 
     return (
-        <div>
-            <div className="primary-search-container">
+        <div className='search-page-body'>
+            <div>
+                <FilterSection />
+            </div>
+            <div>
                 <SearchField
                     collectionRef={collectionRef}
                     cars={cars}
                 />
-            </div>
-            <div className='search-page-body'>
-                <FilterSection />
-                <SearchResultsCard 
+                <SearchResultsCard
                     cars={cars}
                 />
             </div>

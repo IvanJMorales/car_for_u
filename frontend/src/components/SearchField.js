@@ -11,6 +11,7 @@ import Slider from '@mui/material/Slider';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button'
 import { CollectionContext } from "../App";
+import SearchIcon from '@mui/icons-material/Search';
 
 import { useNavigate } from "react-router";
 import SearchResultsBody from "./SearchResultsBody";
@@ -69,11 +70,10 @@ const SearchField = (props) => {
     //console.log("CARS ARRAY:", props.cars)
 
     return (
-        <div className="selection-area">
-            <div className="search-bar-container">
-                <input className='search-bar' type="search" placeholder="Search (BY MANUFACTURER ONLY)" onChange={event => setSearch(event.target.value)}></input>
-                <Button onClick={() => findCar()} variant="contained">SEARCH</Button>
-            </div>
+        <div className="search-bar-container">
+            <SearchIcon />
+            <input className='search-bar' type="search" placeholder="Search (BY MANUFACTURER ONLY)" onChange={event => setSearch(event.target.value)}></input>
+            <Button onClick={() => findCar()} variant="contained">SEARCH</Button>
         </div>
     );
 };
