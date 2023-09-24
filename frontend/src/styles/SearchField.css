@@ -1,11 +1,17 @@
 .search-bar-container {
     display: flex;
-    margin: 10px;
+    padding: 10px;
+    margin: 20px;
     justify-content: center;
     border-style: solid;
     border-color: gray;
     border-width: 1px;
     border-radius: 10px;
+}
+
+.search-icon {
+    display: flex;
+    margin-top: 10px;
 }
 
 .search-bar {
@@ -14,50 +20,6 @@
     background: white;
     outline: none;
     border: none;
-    border-radius: 1.625rem;
     padding: 0 3.5rem 0 1.5rem;
     font-size: 1rem;
-}
-
-.menu-item {
-    text-transform: lowercase;
-}
-
-.selectors {
-    padding-top: 10px;
-}
-
-.options {
-    width: 500px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#make, #model, #miles, #year, #price {
-    background-color: white;
-}
-
-.slider-container {
-    height: 200px;
-    width: 500px;
-}
-
-.priceInputField {
-    padding: 10px;
-}
-
-.minPrice, .maxPrice {
-    margin: 10px;
-}
-
-.slider {
-    padding: 10px 50px 10px 50px;
-}
-
-#h4 {
-    margin: 20px;
-}
-
-.search-button {
-    height: 50px;
 }

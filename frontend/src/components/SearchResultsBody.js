@@ -22,6 +22,7 @@ import { CollectionContext } from "../App";
 const SearchResultsBody = () => {
     // Get state of search from Search Bar in SearchField.js
     const searchRef = useLocation();
+     console.log(searchRef.state.search)
     //console.log(searchRef.state.search)
 
     // Set state of cars in array
@@ -31,16 +32,16 @@ const SearchResultsBody = () => {
     const collectionRef = useContext(CollectionContext)
 
     // Declare and set query
-    const q = query(collectionRef, where("Manufacturer", "==", searchRef.state.search));
+    //const q = query(collectionRef, where("Manufacturer", "==", searchRef.state.search));
 
     // Get snapshot of query
-    useEffect(() => {
+    /*useEffect(() => {
         const getQuerySnapshot = async () => {
             const querySnapshot = await getDocs(q);
             setCarState(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         };
         getQuerySnapshot();
-    }, [])
+    }, [])*/
 
     
     //console.log(carState.Name)
@@ -48,7 +49,7 @@ const SearchResultsBody = () => {
 
     return (
         <div className='card-container'>
-            {carState.map((car) => (
+            {searchRef.state.search.map((car) => (
                 <Card className='card' raised='true' key={car.id} value={car.CarMake}>
                     <CardActionArea>
                         <Link to={'/car-info/' + car.id}>
