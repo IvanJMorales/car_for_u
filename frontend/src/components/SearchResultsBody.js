@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 
-import { SearchResultsContext } from './SearchField';
-
+// MUI Imports
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -10,46 +9,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
-import { Link, useLocation, useParams } from 'react-router-dom';
-
-import { collection, query, where, getDocs } from "firebase/firestore";
-
-import { CollectionContext } from "../App";
+// React Router Imports
+import { Link, useLocation } from 'react-router-dom';
 
 
 
 
 const SearchResultsBody = () => {
     // Get state of search from Search Bar in SearchField.js
-    const searchRef = useLocation();
-     console.log(searchRef.state.search)
-    //console.log(searchRef.state.search)
-
-    // Set state of cars in array
-    const [carState, setCarState] = useState([]);
-
-    // Set collectionRef to Collection Context from ./App
-    const collectionRef = useContext(CollectionContext)
-
-    // Declare and set query
-    //const q = query(collectionRef, where("Manufacturer", "==", searchRef.state.search));
-
-    // Get snapshot of query
-    /*useEffect(() => {
-        const getQuerySnapshot = async () => {
-            const querySnapshot = await getDocs(q);
-            setCarState(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        };
-        getQuerySnapshot();
-    }, [])*/
-
-    
-    //console.log(carState.Name)
-
+    const searchResultRef = useLocation();
 
     return (
         <div className='card-container'>
-            {searchRef.state.search.map((car) => (
+            {searchResultRef.state.searchResult.map((car) => (
                 <Card className='card' raised='true' key={car.id} value={car.CarMake}>
                     <CardActionArea>
                         <Link to={'/car-info/' + car.id}>

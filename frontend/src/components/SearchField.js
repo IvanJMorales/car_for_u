@@ -17,34 +17,35 @@ export const SearchResultsContext = createContext()
 const SearchField = (props) => {
     // Initialize state
     const [search, setSearch] = useState('')
+    const [searchResult, setSearchResult] = useState([])
     
+    // Set navigate
     const navigate = useNavigate();
 
     // Set collectionRef to Collection Context from ./App
     const collectionRef = useContext(CollectionContext)
+    const q = query(collectionRef, where("Manufacturer", "==", search));
 
     // Query through Manucturers to match car with user input
     function findCar() {
-        const q = query(collectionRef, where("Manufacturer", "==", search));
-
         const getQuerySnapshot = async () => {
             const querySnapshot = await getDocs(q);
-            const answer = querySnapshot.forEach((doc) => {
+            querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
-                //console.log("QUERY:", doc.id, " => ", doc.data());
+                setSearchResult(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
             });
-
-            console.log(answer)
-
-            if (querySnapshot.size != 0) {
-                navigate("/search-results/", {
-                    state: {
-                        search: answer
-                    }
-                })
-            }
-        };
+        }
         getQuerySnapshot();
+    }
+
+    // If searchResult is not empty, navigate to search-results 
+    // path and push state to SearchResultsBody.js
+    if (searchResult != 0) {
+        navigate("/search-results/", {
+            state: {
+                searchResult: searchResult
+            }
+        })
     }
 
     return (
