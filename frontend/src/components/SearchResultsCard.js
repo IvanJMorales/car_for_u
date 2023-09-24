@@ -26,11 +26,8 @@ const SearchResultsCard = (props) => {
     //const [compareCars, setCompareCars] = useState([]);
     const [fav, setFav] = useState("false");
 
-    const navigate = useNavigate();
+    // Set Redux dispatch
     const dispatch = useDispatch();
-
-    // Collection Reference
-    const data = useContext(CollectionContext)
 
     // Redux
     const carsToCompare = useSelector(selectCarsToCompare)
@@ -42,7 +39,6 @@ const SearchResultsCard = (props) => {
         ))
         setFav(!fav);
     }
-
 
     // Remove selected car from compare array
     const removeCarFromCompare = (vehicle) => {

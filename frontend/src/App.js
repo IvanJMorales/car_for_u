@@ -11,7 +11,7 @@ import UserProfile from './components/UserProfile';
 
 
 // React Router
-import {Routes, Switch, Route} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 
 // Firebase
 import { collection, getDocs } from "firebase/firestore";
@@ -20,9 +20,7 @@ import CarComparisons from './components/CarComparisons';
 import SearchResultsBody from './components/SearchResultsBody';
 import CarInfoPage from './components/CarInfoPage';
 import FilterSearchResults from './components/FilterSearchResults';
-import { onAuthStateChanged, browserLocalPersistence, setPersistence } from 'firebase/auth';
-import Loader from './components/Loader';
-
+import { onAuthStateChanged } from 'firebase/auth';
 
 
 /***COLLECTION REFERENCE START***/
@@ -37,7 +35,6 @@ const collectionRef = collection(database, "Vehicles");
 //User Context
 export const UserContext = createContext();
 /***USER CONTEXT END ***/
-
 
 
 function App() {
@@ -74,10 +71,6 @@ function App() {
             <Route path="/search-results/" element={<SearchResultsBody />}/>
             <Route path="/car-info/:id" element={<CarInfoPage />}/>
             <Route path='filter-search-results/' element={<FilterSearchResults />}/>
-            {/*<Route path="/right-car-for-you" element={<RightCar4U />}/>
-            <Route path='/profile' element={<UserProfile />}/>
-            <Route path='/signup' element={<SignupPage />}/>
-            <Route path='/login' element={<LoginPage />}/>*/}
           </Routes>
       </UserContext.Provider>
       </CollectionContext.Provider>

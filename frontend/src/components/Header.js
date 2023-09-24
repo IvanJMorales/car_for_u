@@ -15,7 +15,6 @@ import { setActiveUser, setUserLogOutState, selectUser, selectUserEmail, selectU
 import SmallNav from './SmallNav';
 import { createPortal } from 'react-dom';
 import { UserContext } from '../App';
-import Loader from './Loader';
 
 const Header = () => {
     //const [user, setUser] = useState();

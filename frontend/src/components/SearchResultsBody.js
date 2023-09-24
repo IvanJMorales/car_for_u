@@ -12,9 +12,6 @@ import CardActionArea from '@mui/material/CardActionArea';
 // React Router Imports
 import { Link, useLocation } from 'react-router-dom';
 
-
-
-
 const SearchResultsBody = () => {
     // Get state of search from Search Bar in SearchField.js
     const searchResultRef = useLocation();
@@ -53,7 +50,6 @@ const SearchResultsBody = () => {
             )
             )}
         </div>
-
     );
 };
 
