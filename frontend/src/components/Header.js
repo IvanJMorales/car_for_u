@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/Header.css"
 
-import SignIn from '../components/SignIn.js'
+import SignIn from '../pages/SignIn.js'
 
 
 // Firebase

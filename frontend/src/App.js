@@ -2,25 +2,26 @@ import React, { createContext, useState, useEffect } from 'react';
 import './App.css';
 
 // Components
-import HomePage from './components/HomePage';
+import HomePage from './pages/HomePage';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import SearchPage from './components/SearchPage';
-import HowItWorksPage from './components/HowItWorksPage';
-import UserProfile from './components/UserProfile';
+import SearchPage from './pages/SearchPage';
+import HowItWorksPage from './pages/HowItWorksPage';
+import UserProfile from './pages/UserProfile';
 
 
 // React Router
 import {Routes, Route} from "react-router-dom";
 
 // Firebase
-import { collection, getDocs } from "firebase/firestore";
+import { collection, orderBy } from "firebase/firestore";
 import { database, auth } from './firebase.js';
 import CarComparisons from './components/CarComparisons';
 import SearchResultsBody from './components/SearchResultsBody';
-import CarInfoPage from './components/CarInfoPage';
-import FilterSearchResults from './components/FilterSearchResults';
+import CarInfoPage from './pages/CarInfoPage';
+import FilterSearchResults from './pages/FilterSearchResults';
 import { onAuthStateChanged } from 'firebase/auth';
+import PrivateRoutes from './routes/PrivateRoutes';
 
 
 /***COLLECTION REFERENCE START***/
@@ -29,6 +30,7 @@ export const CollectionContext = createContext();
 
 // Reference to firebase collection
 const collectionRef = collection(database, "Vehicles");
+
 /***COLLECTION REFERENCE END***/
 
 /***USER CONTEXT START ***/
@@ -66,11 +68,13 @@ function App() {
             <Route path="/" element={<HomePage />}/>
             <Route path="/search-page" element={<SearchPage />}/>
             <Route path="/how-it-works" element={<HowItWorksPage />}/>
-            <Route path="/profile" element={<UserProfile />} />
+            <Route element={<PrivateRoutes />}>
+              <Route path="/profile" exact element={<UserProfile />}/>
+              <Route path='/filter-search-results/' element={<FilterSearchResults />}/>
+            </Route>
             <Route path='/compare-cars' element={<CarComparisons />}/>
             <Route path="/search-results/" element={<SearchResultsBody />}/>
             <Route path="/car-info/:id" element={<CarInfoPage />}/>
-            <Route path='filter-search-results/' element={<FilterSearchResults />}/>
           </Routes>
       </UserContext.Provider>
       </CollectionContext.Provider>

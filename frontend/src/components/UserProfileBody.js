@@ -5,7 +5,7 @@ import '../styles/UserProfileBody.css'
 import { Link, redirect, useNavigate } from 'react-router-dom';
 
 
-import SignIn from '../components/SignIn.js';
+import SignIn from '../pages/SignIn.js';
 
 import { Avatar } from '@mui/material';
 

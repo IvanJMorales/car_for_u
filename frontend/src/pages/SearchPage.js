@@ -1,22 +1,23 @@
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import "../styles/SearchPage.css";
-import Loading from './Loading';
+import Loading from '../components/Loading';
 
 // Firebase Imports
 import { collection, getDocs } from "firebase/firestore";
 import { database } from '../firebase.js';
 
 // Components Imports
-import SearchField from "./SearchField";
-import SearchResultsCard from "./SearchResultsCard";
-import CarFavoritesDrawer from './CarFavoritesDrawer.js';
+import SearchField from "../components/SearchField";
+import SearchResultsCard from "../components/SearchResultsCard";
+import CarFavoritesDrawer from '../components/CarFavoritesDrawer.js';
 
 // Mui Imports
 import Pagination from '@mui/material/Pagination';
-import FilterSection from './FilterSection';
+import FilterSection from '../components/FilterSection';
 import { useSelector } from 'react-redux';
 import { selectCarsToCompare } from '../redux/features/compareSlice';
 import { CollectionContext } from '../App';
+import SearchResultsCounter from '../components/SearchResultsCounter';
 
 
 
@@ -55,6 +56,7 @@ const SearchPage = () => {
                             collectionRef={collectionRef}
                             cars={cars}
                         />
+                        <SearchResultsCounter cars={cars} />
                         <SearchResultsCard
                             cars={cars}
                         />

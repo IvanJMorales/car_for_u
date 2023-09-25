@@ -1,9 +1,12 @@
 .filter-section-container {
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     z-index: 1;
-    background: #eee;
+    background: #255390;
     border-radius: 10px;
     margin-top: 20px;
     padding-top: 20px;
+    font-weight: 1000;
+    color: white;
+    margin-left: 5px;
 }

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../styles/FilterSearchResults.css'
 
-import { SearchResultsContext } from './SearchField';
+import { SearchResultsContext } from '../components/SearchField';
 
 // MUI
 import Card from '@mui/material/Card';

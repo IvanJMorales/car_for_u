@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import UserProfileBody from '../components/UserProfileBody.js';
-import UPCarFavoritesSection from './UPCarFavoritesSection.js';
+import UPCarFavoritesSection from '../components/UPCarFavoritesSection.js';
 
 const UserProfile = () => {
     return (

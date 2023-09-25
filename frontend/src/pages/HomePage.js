@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePageBody from './HomePageBody';
+import HomePageBody from '../components/HomePageBody';
 
 const HomePage = () => {
     return (

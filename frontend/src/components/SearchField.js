@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import "../styles/SearchField.css";
 
 // Firebase imports
@@ -10,6 +10,7 @@ import { CollectionContext } from "../App";
 import SearchIcon from '@mui/icons-material/Search';
 
 import { useNavigate } from "react-router";
+import SmallFilterList from "./SmallFilterList";
 
 // Create Context for results from search bar input
 export const SearchResultsContext = createContext()
@@ -18,6 +19,10 @@ const SearchField = (props) => {
     // Initialize state
     const [search, setSearch] = useState('')
     const [searchResult, setSearchResult] = useState([])
+
+    const [matches, setMatches] = useState(
+        window.matchMedia("(min-width: 768px)").matches
+    )
     
     // Set navigate
     const navigate = useNavigate();
@@ -48,11 +53,30 @@ const SearchField = (props) => {
         })
     }
 
+    // Media query
+    useEffect(() => {
+        window
+        .matchMedia("(min-width: 600px)")
+        .addEventListener('change', e => setMatches( e.matches ));
+    }, [])
+
     return (
-        <div className="search-bar-container">
-            <SearchIcon className="search-icon"/>
-            <input className='search-bar' type="search" placeholder="Search (BY MANUFACTURER ONLY)" onChange={event => setSearch(event.target.value)}></input>
-            <Button onClick={() => findCar()} variant="contained">SEARCH</Button>
+        <div>
+            {matches && (
+                <div className="search-bar-container">
+                    <SearchIcon className="search-icon"/>
+                    <input className='search-bar' type="search" placeholder="Search (BY MANUFACTURER ONLY)" onChange={event => setSearch(event.target.value)}></input>
+                    <Button onClick={() => findCar()} variant="contained">SEARCH</Button>
+                </div>
+            )}
+            {!matches && (
+                <div className="search-bar-container">
+                    <SmallFilterList />
+                    <SearchIcon className="search-icon"/>
+                    <input className='search-bar' type="search" placeholder="Search (BY MANUFACTURER ONLY)" onChange={event => setSearch(event.target.value)}></input>
+                    <Button onClick={() => findCar()} variant="contained">SEARCH</Button>
+                </div>
+            )}
         </div>
     );
 };
