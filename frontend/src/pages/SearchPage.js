@@ -1,17 +1,16 @@
-import React, { useEffect, useState, createContext, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import "../styles/SearchPage.css";
-import Loading from '../components/Loading';
-
-// Firebase Imports
-import { collection, getDocs } from "firebase/firestore";
-import { database } from '../firebase.js';
 
 // Components Imports
 import SearchField from "../components/SearchField";
 import SearchResultsCard from "../components/SearchResultsCard";
 import CarFavoritesDrawer from '../components/CarFavoritesDrawer.js';
+import Loading from '../components/Loading';
 
-// Mui Imports
+// Firebase Imports
+import { getDocs } from "firebase/firestore";
+
+// MUI Imports
 import Pagination from '@mui/material/Pagination';
 import FilterSection from '../components/FilterSection';
 import { useSelector } from 'react-redux';
@@ -22,12 +21,15 @@ import SearchResultsCounter from '../components/SearchResultsCounter';
 
 
 const SearchPage = () => {
-    // Create state for cars
+    // Init state
     const [cars, setCars] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    // Redux
+    const carsToCompareRef = useSelector(selectCarsToCompare);
+
     // Grab Vehicles collection from Firestore Database
-    const collectionRef = useContext(CollectionContext)
+    const collectionRef = useContext(CollectionContext);
 
     // Grab each Document in Vehicle Collection from Firestore Database
     // and set to cars
@@ -40,8 +42,6 @@ const SearchPage = () => {
         };
         getData();
     }, []);
-
-    const carsToCompareRef = useSelector(selectCarsToCompare)
 
     return (
         <div>

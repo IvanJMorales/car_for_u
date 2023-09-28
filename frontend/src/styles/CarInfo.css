@@ -1,4 +1,4 @@
-.container {
+.carInfo-body {
     display: flex;
     height: 100vh;
     background-image: linear-gradient(#ffffff,#bec8d8);
@@ -7,6 +7,12 @@
 .carInfo-image {
     margin: 10px;
     width: 100%;
+}
+
+.vehicle-overview-container {
+    background-color: white;
+    height: 100px;
+
 }
 
 .carInfo-container {

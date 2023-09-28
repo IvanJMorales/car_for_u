@@ -32,6 +32,8 @@ const SignIn = ({ onClose }) => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+
+                console.log(errorMessage);
             })
     }
 

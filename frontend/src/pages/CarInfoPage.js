@@ -1,28 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../styles/CarInfo.css';
 
+// MUI Imports
 import Button from '@mui/material/Button'
 
+// React Router Imports
 import { Link, useParams } from 'react-router-dom';
 
-// Firebase imports
+// Firebase Imports
 import { doc, getDoc } from "firebase/firestore";
 import { database } from '../firebase.js';
-
-import { CollectionContext } from '../App';
-import { Textfit } from 'react-textfit';
+import VehicleDetailsContainer from '../components/VehicleDetailsContainer';
 
 
 const CarInfoPage = () => {
     // Create state for car selected
-    const [carState, setCarState] = useState('');
+    const [car, setCar] = useState('');
 
-    // Get car id from end of URL
+    // Get car ID from end of URL
     const carId = useParams();
-    console.log("CAR ID PARAM:", carId.id)
-
-    // Get Collection Contexts from "./App"
-    const collection = useContext(CollectionContext)
 
     // Reference document based on carId
     const docRef = doc(database, "Vehicles", carId.id)
@@ -31,8 +27,7 @@ const CarInfoPage = () => {
     useEffect(() => {
         const getCarData = async () => {
             const docSnap = await getDoc(docRef);
-            //console.log(docSnap.data());
-            setCarState(docSnap.data())
+            setCar(docSnap.data())
         };
         getCarData();
     }, []);
@@ -56,39 +51,49 @@ const CarInfoPage = () => {
     })
 
     return (
-        <div className='container'>
-            <img className='carInfo-image'
-                src={carState.Image}
-            />
+        <div className='carInfo-body'>
+                                <VehicleDetailsContainer />
+
+            <div className='left-container'>
+                <img className='carInfo-image'
+                    src={car.Image}
+                />
+                <div className='vehicle-overview-container'>
+                    HELLO
+                </div>
+            </div>
+            <div className=''>
+
+            </div>
             <div className='carInfo-container'>
                 <div className='carInfo-name'>
-                    {carState.Name}
+                    {car.Name}
                 </div>
-                <div className='carInfo-price'>Price: ${carState.Price}</div>
+                <div className='carInfo-price'>Price: ${car.Price}</div>
                 <div className='carInfo-details-container'>
                     <div className='carInfo-details-title'>Vehicle Details</div>
                     <ul className='carInfo-details-grid'>
                         <li className='list-item'>
-                            <div className='carInfo-list-detail'>Manufacturer: {carState.Manufacturer}</div>
+                            <div className='carInfo-list-detail'>Manufacturer: {car.Manufacturer}</div>
                         </li>
                         <li className='list-item'>
-                            <div className='carInfo-list-detail'>Model: {carState.Model}</div>
+                            <div className='carInfo-list-detail'>Model: {car.Model}</div>
                         </li>
                         <li className='list-item'>
-                            <div className='carInfo-list-detail'>Year: {carState.Year}</div>
+                            <div className='carInfo-list-detail'>Year: {car.Year}</div>
                         </li>
                         <li className='list-item'>
-                            <div className='carInfo-list-detail'>Miles: {carState.Miles}</div> 
+                            <div className='carInfo-list-detail'>Miles: {car.Miles}</div> 
                         </li>
                         <li className='list-item'>
-                            <div className='carInfo-list-detail'>Color: {carState.Color}</div>
+                            <div className='carInfo-list-detail'>Color: {car.Color}</div>
                         </li>
                         <li className='list-item'>
-                            <div className='carInfo-list-detail'>Engine: {carState.Engine}</div>
+                            <div className='carInfo-list-detail'>Engine: {car.Engine}</div>
                         </li>        
                     </ul>
                 </div>
-                <a href={carState.Link} className='carInfo-button'>
+                <a href={car.Link} className='carInfo-button'>
                     <Button size="large">Go To Dealer</Button>
                 </a>
             </div>
