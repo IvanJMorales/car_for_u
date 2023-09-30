@@ -1,86 +1,55 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/VehicleDetailsContainer.css';
-import Box from '@mui/material/Box';
+
+// MUI Imports
 import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 const drawerWidth = 240;
 
-const VehicleDetailsContainer = () => {
+const VehicleDetailsContainer = (props) => {
+  const car = props.car
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  useEffect(() => {
+    handleDrawerOpen();
+  })
+  
+
   return (
-    <Box className='vehicle-details-container' sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-      >
-      </AppBar>
-      <Drawer
-        
+    <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            height: 'calc(100% - 64px)',
             width: drawerWidth,
-            boxSizing: 'border-box',
-          },
+              marginTop: 15,
+              marginRight: 1,
+              height: 300,
+              background: 'whitesmoke',
+            },
         }}
-        variant="permanent"
+        variant="persistent"
         anchor="right"
+        open={open}
       >
-        <Toolbar />
-        <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <div>
+            {car.Name}
+          </div>
+          <ListItem>
+            Price: {car.Price}
+          </ListItem>
+          <ListItem>
+            Miles: {car.Miles}
+          </ListItem>
         </List>
       </Drawer>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-        <Toolbar />
-        <Typography paragraph>
-         
-        </Typography>
-        <Typography paragraph>
-          
-        </Typography>
-      </Box>
-    </Box>
   );
 }
 

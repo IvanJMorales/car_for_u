@@ -1,3 +1,5 @@
-.vehicle-details-container {
-    background-color: aqua;
+.vehicle-primary-info {
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
 }
