@@ -3,3 +3,20 @@
     display: flex;
     align-items: center;
 }
+
+.vehicle-title {
+    background-color: #255390;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.vehicle-price {
+    font-size: 30px;
+}
+
+.vehicle-miles {
+    font-size: 20px;
+}

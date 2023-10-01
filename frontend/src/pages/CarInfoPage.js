@@ -52,10 +52,16 @@ const CarInfoPage = () => {
 
     return (
         <div className='carInfo-body'>
-            <img className='carInfo-image'
-                src={car.Image}
-            />
+            <img className='carInfo-image' src={car.Image}/>
             <VehicleDetailsContainer car={car}/>
+            <div className='secondary-info-container'>
+                <div className='secondary-info-item'>{car.Condition}</div>
+                <div className='secondary-info-item'>{car.Year}</div>
+                <div className='secondary-info-item'>{car.Color}</div>
+                <div className='secondary-info-item'>{car.Engine}</div>
+                <div className='secondary-info-item'>{car.Manufacturer}</div>
+                <div className='secondary-info-item'>{car.Year}</div>
+            </div>
         </div>
     );
 };
